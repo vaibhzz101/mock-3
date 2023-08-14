@@ -5,14 +5,14 @@ const app = express();
 const { BookingRouter } = require('./routes/booking.routes');
 const { FlightRouter } = require('./routes/flight.route');
 const {UserRouter} = require('./routes/user.routes')
-
 app.use(express.json())
+
 app.get("/", (req, res) => {
     res.send("welcome to air ticket booking system");
   });
-  app.use("", UserRouter)
-  app.use("", BookingRouter)
-  app.use("", FlightRouter)
+  app.use("/", UserRouter)
+  app.use("/", BookingRouter)
+  app.use("/", FlightRouter)
 
 const PORT = process.env.port || 7070;
 

@@ -4,7 +4,7 @@ const Booking = require("../model/booking.model");
 
 const BookingRouter = express.Router();
 
-BookingRouter.post('/api/bookings', async (req, res) => {
+BookingRouter.post('api/bookings', async (req, res) => {
     try {
       const booking = await Booking.create(req.body);
       res.json(booking);
@@ -14,7 +14,7 @@ BookingRouter.post('/api/bookings', async (req, res) => {
   });
   
   // Get all bookings with flight and user details
-  BookingRouter.get('/api/dashboard', async (req, res) => {
+  BookingRouter.get('api/dashboard', async (req, res) => {
     try {
       const bookings = await Booking.find()
         .populate('user', '-password')
@@ -26,7 +26,7 @@ BookingRouter.post('/api/bookings', async (req, res) => {
   });
   
   // Update a booking
-  BookingRouter.patch('/api/dashboard/:id', async (req, res) => {
+  BookingRouter.patch('api/dashboard/:id', async (req, res) => {
     try {
       const booking = await Booking.findByIdAndUpdate(req.params.id, req.body, { new: true });
       res.json(booking);
@@ -36,7 +36,7 @@ BookingRouter.post('/api/bookings', async (req, res) => {
   });
   
   // Delete a booking
-  BookingRouter.delete('/api/dashboard/:id', async (req, res) => {
+  BookingRouter.delete('api/dashboard/:id', async (req, res) => {
     try {
       await Booking.findByIdAndDelete(req.params.id);
       res.json({ message: 'Booking deleted successfully' });

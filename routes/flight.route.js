@@ -3,7 +3,7 @@ const express = require('express');
 const Flight = require('../model/flight.model');
 const FlightRouter = express.Router();
 
-FlightRouter.get('/api/flights', async (req, res) => {
+FlightRouter.get('api/flights', async (req, res) => {
     try {
       const flights = await Flight.find();
       res.json(flights);
@@ -13,7 +13,7 @@ FlightRouter.get('/api/flights', async (req, res) => {
   });
   
   // Get details of a specific flight
-  FlightRouter.get('/api/flights/:id', async (req, res) => {
+  FlightRouter.get('api/flights/:id', async (req, res) => {
     try {
       const flight = await Flight.findById(req.params.id);
       res.json(flight);
@@ -23,7 +23,7 @@ FlightRouter.get('/api/flights', async (req, res) => {
   });
   
   // Add a new flight
-  FlightRouter.post('/api/flights', async (req, res) => {
+  FlightRouter.post('api/flights', async (req, res) => {
     try {
       const flight = await Flight.create(req.body);
       res.json(flight);
@@ -33,7 +33,7 @@ FlightRouter.get('/api/flights', async (req, res) => {
   });
   
   // Update details of a specific flight
-  FlightRouter.patch('/api/flights/:id', async (req, res) => {
+  FlightRouter.patch('api/flights/:id', async (req, res) => {
     try {
       const flight = await Flight.findByIdAndUpdate(req.params.id, req.body, { new: true });
       res.json(flight);
@@ -43,7 +43,7 @@ FlightRouter.get('/api/flights', async (req, res) => {
   });
   
   // Delete a specific flight
-  FlightRouter.delete('/api/flights/:id', async (req, res) => {
+  FlightRouter.delete('api/flights/:id', async (req, res) => {
     try {
       await Flight.findByIdAndDelete(req.params.id);
       res.json({ message: 'Flight deleted successfully' });
